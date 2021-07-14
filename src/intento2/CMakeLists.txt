@@ -5,6 +5,7 @@ project(intento2)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
 
@@ -273,13 +274,23 @@ install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
 
 
+add_executable(inicialPose src/inicialPose.cpp)
+target_link_libraries(inicialPose ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 
-
-add_executable(codigoFranz src/codigoFranz.cpp)
-target_link_libraries(codigoFranz ${catkin_LIBRARIES} ${Boost_LIBRARIES})
-
-install(TARGETS codigoFranz DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+install(TARGETS inicialPose DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+
+
+
+
+
+
+
+##add_executable(codigoFranz src/codigoFranz.cpp)
+##target_link_libraries(codigoFranz ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+
+##install(TARGETS codigoFranz DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+##install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
 
 

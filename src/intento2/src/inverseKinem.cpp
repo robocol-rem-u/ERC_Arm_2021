@@ -1,39 +1,3 @@
-/*********************************************************************
- * Software License Agreement (BSD License)
- *
- *  Copyright (c) 2013, SRI International
- *  All rights reserved.
- *
- *  Redistribution and use in source and binary forms, with or without
- *  modification, are permitted provided that the following conditions
- *  are met:
- *
- *   * Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *   * Redistributions in binary form must reproduce the above
- *     copyright notice, this list of conditions and the following
- *     disclaimer in the documentation and/or other materials provided
- *     with the distribution.
- *   * Neither the name of SRI International nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- *  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
- *  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
- *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
- *  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
- *  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- *  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
- *  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- *  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
- *  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- *  POSSIBILITY OF SUCH DAMAGE.
- *********************************************************************/
-
-/* Author: Sachin Chitta, Dave Coleman, Mike Lautman */
-
 #include <moveit/move_group_interface/move_group_interface.h>
 #include <moveit/planning_scene_interface/planning_scene_interface.h>
 
@@ -45,11 +9,25 @@
 
 #include <moveit_visual_tools/moveit_visual_tools.h>
 
+
+#include "ros/ros.h"
+#include "std_msgs/String.h"
+ 
+#include <sstream>
+
+
+// get data console  
+
+#include <iostream>
+#include <stdio.h>
+
 // The circle constant tau = 2*pi. One tau is one rotation in radians.
 const double tau = 2 * M_PI;
 
 int main(int argc, char** argv)
 {
+  
+
   ros::init(argc, argv, "move_group_interface_tutorial");
   ros::NodeHandle node_handle;
 
@@ -59,11 +37,9 @@ int main(int argc, char** argv)
   ros::AsyncSpinner spinner(1);
   spinner.start();
 
-  // BEGIN_TUTORIAL
-  //
+  
   // Setup
-  // ^^^^^
-  //
+  
   // MoveIt operates on sets of joints called "planning groups" and stores them in an object called
   // the `JointModelGroup`. Throughout MoveIt the terms "planning group" and "joint model group"
   // are used interchangably.
@@ -116,9 +92,9 @@ int main(int argc, char** argv)
   std::copy(move_group_interface.getJointModelGroupNames().begin(),
             move_group_interface.getJointModelGroupNames().end(), std::ostream_iterator<std::string>(std::cout, ", "));
 
-  // Start the demo
-  // ^^^^^^^^^^^^^^^^^^^^^^^^^
-  visual_tools.prompt("Press 'next' in the RvizVisualToolsGui window to start the demo");
+  // Start 
+  
+  
 
   // .. _move_group_interface-planning-to-pose-goal:
   //
@@ -126,8 +102,31 @@ int main(int argc, char** argv)
   // ^^^^^^^^^^^^^^^^^^^^^^^
   // We can plan a motion for this group to a desired pose for the
   // end-effector.
+
+
+ int pos;
+
+ //printf("Selecciona una accion \n 0. Iniciar \n 9. Terminar ");
+ //setbuf(stdin,NULL);
+ //scanf("%d",&pos);
+ pos=0;
+ while(pos != 9)
+{
+// read data pose
+ 
+   
+   printf("\nSelecciona una accion \n 1. Pose A \n 2. Pose B \n 3. Cerrar Gripper \n 4. Abrir Gripper \n 9. Terminar \n");
+   setbuf(stdin,NULL);
+   scanf("%d",&pos);
+   //printf("Intentando Pose:   %d",pos);
+
+  if (pos==1)
+{
   geometry_msgs::Pose target_pose1;
-  target_pose1.orientation.w = 1.0;
+  target_pose1.orientation.x = 1.0;
+  target_pose1.orientation.y = 1.0;
+  target_pose1.orientation.z = 1.0;
+  target_pose1.orientation.w = 2.0;
   target_pose1.position.x = 0.3;
   target_pose1.position.y = 0.05;
   target_pose1.position.z = 0.4;
@@ -151,27 +150,97 @@ int main(int argc, char** argv)
   visual_tools.publishTrajectoryLine(my_plan.trajectory_, joint_model_group);
   visual_tools.trigger();
   move_group_interface.move();
+}
 
+ if (pos==2)
+{
+  geometry_msgs::Pose target_pose2;
+  target_pose2.orientation.x = 1.0;
+  target_pose2.orientation.y = 1.0;
+  target_pose2.orientation.z = 1.0;
+  target_pose2.orientation.w = 2.0;
+  target_pose2.position.x = 0.12;
+  target_pose2.position.y = 0.26;
+  target_pose2.position.z = 0.21;
+  move_group_interface.setPoseTarget(target_pose2);
+
+  // Now, we call the planner to compute the plan and visualize it.
+  // Note that we are just planning, not asking move_group_interface
+  // to actually move the robot.
+  moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+
+  bool success = (move_group_interface.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 (pose goal) %s", success ? "" : "FAILED");
+
+  // Visualizing plans
   
-  visual_tools.prompt("Press 'next' in the RvizVisualToolsGui window to continue the demo");
+  // We can also visualize the plan as a line with markers in RViz.
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 as trajectory line");
+  visual_tools.publishAxisLabeled(target_pose2, "pose2");
+  visual_tools.publishText(text_pose, "Pose Goal", rvt::WHITE, rvt::XLARGE);
+  visual_tools.publishTrajectoryLine(my_plan.trajectory_, joint_model_group);
+  visual_tools.trigger();
+  move_group_interface.move();
+}
 
-  // Finally, to execute the trajectory stored in my_plan, you could use the following method call:
-  // Note that this can lead to problems if the robot moved in the meanwhile.
-  // move_group_interface.execute(my_plan);
-
-  // Moving to a pose goal
-  // ^^^^^^^^^^^^^^^^^^^^^
-  //
-  // If you do not want to inspect the planned trajectory,
-  // the following is a more robust combination of the two-step plan+execute pattern shown above
-  // and should be preferred. Note that the pose goal we had set earlier is still active,
-  // so the robot will try to move to that goal.
-
-  // move_group_interface.move();
-
+if (pos==3)
+{
+ 
   
 
-  // END_TUTORIAL
+  // ros::init(argc, argv, "gripp");
+  //ros::NodeHandle n;
+  
+ ros::Publisher pub = node_handle.advertise<std_msgs::String>("/gripper_command", 1000);
+ int con;
+ while (ros::ok())
+{
+  
+  std_msgs::String msg;
+  msg.data = "close";
+  pub.publish(msg);
+
+  printf("\n 1. Continuar\n 9. Terminar\n");
+  setbuf(stdin,NULL);
+  scanf("%d",&con);
+  if (con==9)
+  {
+   break;
+  }
+}
+}
+
+
+if (pos==4)
+{
+ 
+  
+
+  // ros::init(argc, argv, "gripp");
+  //ros::NodeHandle n;
+  
+ ros::Publisher pub = node_handle.advertise<std_msgs::String>("/gripper_command", 1000);
+ int con;
+ while (ros::ok())
+{
+  
+  std_msgs::String msg;
+  msg.data = "open";
+  pub.publish(msg);
+
+  printf("\n 1. Continuar\n 9. Terminar\n");
+  setbuf(stdin,NULL);
+  scanf("%d",&con);
+  if (con==9)
+  {
+  break;
+  }
+}
+}
+ 
+  
+}
 
   ros::shutdown();
   return 0;

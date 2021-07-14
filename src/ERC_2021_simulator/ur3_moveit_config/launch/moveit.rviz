@@ -5,8 +5,8 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /MotionPlanning1
+        - /MotionPlanning1/Scene Robot1
         - /MotionPlanning1/Planning Request1
-        - /TF1
         - /TF1/Frames1
       Splitter Ratio: 0.5
     Tree Height: 140
@@ -28,7 +28,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: Camera
+    SyncSource: ""
   - Class: rviz_visual_tools/RvizVisualToolsGui
     Name: RvizVisualToolsGui
 Preferences:
@@ -357,13 +357,13 @@ Visualization Manager:
         Goal State Color: 250; 128; 0
         Interactive Marker Size: 0.15000000596046448
         Joint Violation Color: 255; 0; 255
-        Planning Group: gripper
-        Query Goal State: true
+        Planning Group: manipulator
+        Query Goal State: false
         Query Start State: false
         Show Workspace: false
         Start State Alpha: 1
         Start State Color: 0; 255; 0
-      Planning Scene Topic: move_group/monitored_planning_scene
+      Planning Scene Topic: /move_group/monitored_planning_scene
       Robot Description: robot_description
       Scene Geometry:
         Scene Alpha: 0.8999999761581421
@@ -648,19 +648,195 @@ Visualization Manager:
         Value: true
       Zoom Factor: 1
     - Class: rviz/TF
-      Enabled: false
+      Enabled: true
       Frame Timeout: 15
       Frames:
+        0_box:
+          Value: false
         All Enabled: false
-      Marker Scale: 0.10000000149011612
+        IMU_module_box:
+          Value: false
+        aruco_1:
+          Value: false
+        aruco_10:
+          Value: false
+        aruco_11:
+          Value: false
+        aruco_12:
+          Value: false
+        aruco_13:
+          Value: false
+        aruco_14:
+          Value: false
+        base:
+          Value: false
+        base_link:
+          Value: false
+        button1_cylinder:
+          Value: false
+        button2_cylinder:
+          Value: false
+        camera_camera:
+          Value: false
+        camera_camera_gazebo:
+          Value: false
+        camera_camera_lens:
+          Value: false
+        camera_link:
+          Value: false
+        camera_link1:
+          Value: false
+        camera_ur_mount:
+          Value: false
+        center_panel_box:
+          Value: false
+        dys_middle:
+          Value: false
+        ee_link:
+          Value: false
+        forearm_link:
+          Value: false
+        inspection_window:
+          Value: false
+        inspection_window_cover:
+          Value: false
+        left_finger_tip:
+          Value: false
+        left_finger_tip_temp:
+          Value: false
+        left_inner_finger:
+          Value: false
+        left_inner_finger2:
+          Value: false
+        left_inner_knuckle:
+          Value: false
+        left_inner_knuckle2:
+          Value: false
+        left_outer_finger:
+          Value: false
+        left_outer_knuckle:
+          Value: false
+        left_panel_box:
+          Value: false
+        plate1:
+          Value: false
+        right_finger_tip:
+          Value: false
+        right_finger_tip_temp:
+          Value: false
+        right_inner_finger:
+          Value: false
+        right_inner_finger2:
+          Value: false
+        right_inner_knuckle:
+          Value: false
+        right_inner_knuckle2:
+          Value: false
+        right_outer_finger:
+          Value: false
+        right_outer_knuckle:
+          Value: false
+        right_panel_box:
+          Value: false
+        robotiq_arg2f_base_link:
+          Value: false
+        shoulder_link:
+          Value: false
+        stand_box:
+          Value: false
+        tool0:
+          Value: false
+        upper_arm_link:
+          Value: false
+        world:
+          Value: false
+        wrist_1_link:
+          Value: false
+        wrist_2_link:
+          Value: false
+        wrist_3_link:
+          Value: true
+      Marker Scale: 1
       Name: TF
-      Show Arrows: true
+      Show Arrows: false
       Show Axes: true
-      Show Names: true
+      Show Names: false
       Tree:
-        {}
+        world:
+          0_box:
+            {}
+          IMU_module_box:
+            aruco_10:
+              {}
+          aruco_1:
+            {}
+          aruco_14:
+            {}
+          base_link:
+            base:
+              {}
+            shoulder_link:
+              upper_arm_link:
+                forearm_link:
+                  wrist_1_link:
+                    wrist_2_link:
+                      wrist_3_link:
+                        ee_link:
+                          {}
+                        tool0:
+                          camera_ur_mount:
+                            camera_link1:
+                              camera_link:
+                                camera_camera_lens:
+                                  camera_camera:
+                                    camera_camera_gazebo:
+                                      {}
+                          robotiq_arg2f_base_link:
+                            left_inner_knuckle:
+                              left_inner_knuckle2:
+                                {}
+                            left_outer_knuckle:
+                              left_outer_finger:
+                                left_inner_finger:
+                                  left_finger_tip_temp:
+                                    left_finger_tip:
+                                      {}
+                                  left_inner_finger2:
+                                    {}
+                            plate1:
+                              dys_middle:
+                                {}
+                            right_inner_knuckle:
+                              right_inner_knuckle2:
+                                {}
+                            right_outer_knuckle:
+                              right_outer_finger:
+                                right_inner_finger:
+                                  right_finger_tip_temp:
+                                    right_finger_tip:
+                                      {}
+                                  right_inner_finger2:
+                                    {}
+          button1_cylinder:
+            {}
+          button2_cylinder:
+            {}
+          center_panel_box:
+            {}
+          left_panel_box:
+            aruco_11:
+              {}
+          right_panel_box:
+            inspection_window:
+              aruco_12:
+                {}
+              inspection_window_cover:
+                aruco_13:
+                  {}
+          stand_box:
+            {}
       Update Interval: 0
-      Value: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -689,25 +865,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 0.8905569314956665
+      Distance: 1.0705751180648804
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.07148462533950806
-        Y: 0.21340210735797882
-        Z: 0.5781793594360352
+        X: 0.06286895275115967
+        Y: 0.31063222885131836
+        Z: 0.2676229476928711
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.5503973364830017
+      Pitch: 0.5547963976860046
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.9622352123260498
+      Yaw: 1.8522882461547852
     Saved: ~
 Window Geometry:
   Camera:

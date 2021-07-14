@@ -6,6 +6,8 @@ import moveit_commander
 from math import pi
 
 
+
+
 class MoveGroupPythonInteface(object):
     def __init__(self):
         super(MoveGroupPythonInteface, self).__init__()
@@ -26,6 +28,7 @@ class MoveGroupPythonInteface(object):
         self.move_group.go(joint_goal, wait=True)
 	print ('buenas noches')	
         self.move_group.stop()
+        #rospy.signal_shutdown("reason")
 
 
 class GripperController:
