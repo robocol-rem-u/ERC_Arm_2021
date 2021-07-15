@@ -105,31 +105,45 @@ int main(int argc, char** argv)
 
 
  int pos;
+ double pX;
+ double pY;
+ double pZ;
+ double d;
+ double c;
+ double g;
 
  //printf("Selecciona una accion \n 0. Iniciar \n 9. Terminar ");
  //setbuf(stdin,NULL);
  //scanf("%d",&pos);
+ pX=0.262;
+ pY=0.002;
+ pZ=0.273;
+ d=0.082;
+ c=0.082;
+ g=0;
  pos=0;
- while(pos != 9)
+ while(pos != 12)
 {
 // read data pose
  
    
-   printf("\nSelecciona una accion \n 1. Pose A \n 2. Pose B \n 3. Cerrar Gripper \n 4. Abrir Gripper \n 9. Terminar \n");
+   printf("\n\n Selecciona una acción \n\n Tocar Boton\n\n [8] [4] [6] \n [3] [1] [2] \n [9] [5] [7] \n\n Otras opciones\n\n 10. Cerrar Gripper \n 11. Abrir Gripper \n 12. Terminar\n");
    setbuf(stdin,NULL);
    scanf("%d",&pos);
    //printf("Intentando Pose:   %d",pos);
 
   if (pos==1)
 {
+  
+
   geometry_msgs::Pose target_pose1;
   target_pose1.orientation.x = 1.0;
   target_pose1.orientation.y = 1.0;
   target_pose1.orientation.z = 1.0;
   target_pose1.orientation.w = 2.0;
-  target_pose1.position.x = 0.3;
-  target_pose1.position.y = 0.05;
-  target_pose1.position.z = 0.4;
+  target_pose1.position.x = pX;
+  target_pose1.position.y = pY;
+  target_pose1.position.z = pz;
   move_group_interface.setPoseTarget(target_pose1);
 
   // Now, we call the planner to compute the plan and visualize it.
@@ -152,16 +166,22 @@ int main(int argc, char** argv)
   move_group_interface.move();
 }
 
+
+
+
  if (pos==2)
-{
+{  
+  
+  
+
   geometry_msgs::Pose target_pose2;
   target_pose2.orientation.x = 1.0;
   target_pose2.orientation.y = 1.0;
   target_pose2.orientation.z = 1.0;
   target_pose2.orientation.w = 2.0;
-  target_pose2.position.x = 0.12;
-  target_pose2.position.y = 0.26;
-  target_pose2.position.z = 0.21;
+  target_pose2.position.x = pX;
+  target_pose2.position.y = pY-d;
+  target_pose2.position.z = pZ;
   move_group_interface.setPoseTarget(target_pose2);
 
   // Now, we call the planner to compute the plan and visualize it.
@@ -185,6 +205,260 @@ int main(int argc, char** argv)
 }
 
 if (pos==3)
+{  
+  
+  
+
+  geometry_msgs::Pose target_pose2;
+  target_pose2.orientation.x = 1.0;
+  target_pose2.orientation.y = 1.0;
+  target_pose2.orientation.z = 1.0;
+  target_pose2.orientation.w = 2.0;
+  target_pose2.position.x = pX;
+  target_pose2.position.y = pY+d;
+  target_pose2.position.z = pZ;
+  move_group_interface.setPoseTarget(target_pose2);
+
+  // Now, we call the planner to compute the plan and visualize it.
+  // Note that we are just planning, not asking move_group_interface
+  // to actually move the robot.
+  moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+
+  bool success = (move_group_interface.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 (pose goal) %s", success ? "" : "FAILED");
+
+  // Visualizing plans
+  
+  // We can also visualize the plan as a line with markers in RViz.
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 as trajectory line");
+  visual_tools.publishAxisLabeled(target_pose2, "pose2");
+  visual_tools.publishText(text_pose, "Pose Goal", rvt::WHITE, rvt::XLARGE);
+  visual_tools.publishTrajectoryLine(my_plan.trajectory_, joint_model_group);
+  visual_tools.trigger();
+  move_group_interface.move();
+}
+
+if (pos==4)
+{  
+  
+  
+
+  geometry_msgs::Pose target_pose2;
+  target_pose2.orientation.x = 1.0;
+  target_pose2.orientation.y = 1.0;
+  target_pose2.orientation.z = 1.0;
+  target_pose2.orientation.w = 2.0;
+  target_pose2.position.x = pX;
+  target_pose2.position.y = pY;
+  target_pose2.position.z = pZ+c;
+  move_group_interface.setPoseTarget(target_pose2);
+
+  // Now, we call the planner to compute the plan and visualize it.
+  // Note that we are just planning, not asking move_group_interface
+  // to actually move the robot.
+  moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+
+  bool success = (move_group_interface.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 (pose goal) %s", success ? "" : "FAILED");
+
+  // Visualizing plans
+  
+  // We can also visualize the plan as a line with markers in RViz.
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 as trajectory line");
+  visual_tools.publishAxisLabeled(target_pose2, "pose2");
+  visual_tools.publishText(text_pose, "Pose Goal", rvt::WHITE, rvt::XLARGE);
+  visual_tools.publishTrajectoryLine(my_plan.trajectory_, joint_model_group);
+  visual_tools.trigger();
+  move_group_interface.move();
+}
+
+if (pos==5)
+{  
+  
+  
+
+  geometry_msgs::Pose target_pose2;
+  target_pose2.orientation.x = 1.0;
+  target_pose2.orientation.y = 1.0;
+  target_pose2.orientation.z = 1.0;
+  target_pose2.orientation.w = 2.0;
+  target_pose2.position.x = pX;
+  target_pose2.position.y = pY;
+  target_pose2.position.z = pZ-c;
+  move_group_interface.setPoseTarget(target_pose2);
+
+  // Now, we call the planner to compute the plan and visualize it.
+  // Note that we are just planning, not asking move_group_interface
+  // to actually move the robot.
+  moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+
+  bool success = (move_group_interface.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 (pose goal) %s", success ? "" : "FAILED");
+
+  // Visualizing plans
+  
+  // We can also visualize the plan as a line with markers in RViz.
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 as trajectory line");
+  visual_tools.publishAxisLabeled(target_pose2, "pose2");
+  visual_tools.publishText(text_pose, "Pose Goal", rvt::WHITE, rvt::XLARGE);
+  visual_tools.publishTrajectoryLine(my_plan.trajectory_, joint_model_group);
+  visual_tools.trigger();
+  move_group_interface.move();
+}
+if (pos==6)
+{  
+  
+  
+
+  geometry_msgs::Pose target_pose2;
+  target_pose2.orientation.x = 1.0;
+  target_pose2.orientation.y = 1.0;
+  target_pose2.orientation.z = 1.0;
+  target_pose2.orientation.w = 2.0;
+  target_pose2.position.x = pX;
+  target_pose2.position.y = pY-d;
+  target_pose2.position.z = pZ+c;
+  move_group_interface.setPoseTarget(target_pose2);
+
+  // Now, we call the planner to compute the plan and visualize it.
+  // Note that we are just planning, not asking move_group_interface
+  // to actually move the robot.
+  moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+
+  bool success = (move_group_interface.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 (pose goal) %s", success ? "" : "FAILED");
+
+  // Visualizing plans
+  
+  // We can also visualize the plan as a line with markers in RViz.
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 as trajectory line");
+  visual_tools.publishAxisLabeled(target_pose2, "pose2");
+  visual_tools.publishText(text_pose, "Pose Goal", rvt::WHITE, rvt::XLARGE);
+  visual_tools.publishTrajectoryLine(my_plan.trajectory_, joint_model_group);
+  visual_tools.trigger();
+  move_group_interface.move();
+}
+if (pos==7)
+{  
+  
+  
+
+  geometry_msgs::Pose target_pose2;
+  target_pose2.orientation.x = 1.0;
+  target_pose2.orientation.y = 1.0;
+  target_pose2.orientation.z = 1.0;
+  target_pose2.orientation.w = 2.0;
+  target_pose2.position.x = pX;
+  target_pose2.position.y = pY-d;
+  target_pose2.position.z = pZ-c;
+  move_group_interface.setPoseTarget(target_pose2);
+
+  // Now, we call the planner to compute the plan and visualize it.
+  // Note that we are just planning, not asking move_group_interface
+  // to actually move the robot.
+  moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+
+  bool success = (move_group_interface.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 (pose goal) %s", success ? "" : "FAILED");
+
+  // Visualizing plans
+  
+  // We can also visualize the plan as a line with markers in RViz.
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 as trajectory line");
+  visual_tools.publishAxisLabeled(target_pose2, "pose2");
+  visual_tools.publishText(text_pose, "Pose Goal", rvt::WHITE, rvt::XLARGE);
+  visual_tools.publishTrajectoryLine(my_plan.trajectory_, joint_model_group);
+  visual_tools.trigger();
+  move_group_interface.move();
+}
+if (pos==8)
+{  
+  
+  
+
+  geometry_msgs::Pose target_pose2;
+  target_pose2.orientation.x = 1.0;
+  target_pose2.orientation.y = 1.0;
+  target_pose2.orientation.z = 1.0;
+  target_pose2.orientation.w = 2.0;
+  target_pose2.position.x = pX;
+  target_pose2.position.y = pY+d;
+  target_pose2.position.z = pZ+c;
+  move_group_interface.setPoseTarget(target_pose2);
+
+  // Now, we call the planner to compute the plan and visualize it.
+  // Note that we are just planning, not asking move_group_interface
+  // to actually move the robot.
+  moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+
+  bool success = (move_group_interface.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 (pose goal) %s", success ? "" : "FAILED");
+
+  // Visualizing plans
+  
+  // We can also visualize the plan as a line with markers in RViz.
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 as trajectory line");
+  visual_tools.publishAxisLabeled(target_pose2, "pose2");
+  visual_tools.publishText(text_pose, "Pose Goal", rvt::WHITE, rvt::XLARGE);
+  visual_tools.publishTrajectoryLine(my_plan.trajectory_, joint_model_group);
+  visual_tools.trigger();
+  move_group_interface.move();
+}
+if (pos==9)
+{  
+  
+  
+
+  geometry_msgs::Pose target_pose2;
+  target_pose2.orientation.x = 1.0;
+  target_pose2.orientation.y = 1.0;
+  target_pose2.orientation.z = 1.0;
+  target_pose2.orientation.w = 2.0;
+  target_pose2.position.x = pX;
+  target_pose2.position.y = pY+d;
+  target_pose2.position.z = pZ-c;
+  move_group_interface.setPoseTarget(target_pose2);
+
+  // Now, we call the planner to compute the plan and visualize it.
+  // Note that we are just planning, not asking move_group_interface
+  // to actually move the robot.
+  moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+
+  bool success = (move_group_interface.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 (pose goal) %s", success ? "" : "FAILED");
+
+  // Visualizing plans
+  
+  // We can also visualize the plan as a line with markers in RViz.
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 as trajectory line");
+  visual_tools.publishAxisLabeled(target_pose2, "pose2");
+  visual_tools.publishText(text_pose, "Pose Goal", rvt::WHITE, rvt::XLARGE);
+  visual_tools.publishTrajectoryLine(my_plan.trajectory_, joint_model_group);
+  visual_tools.trigger();
+  move_group_interface.move();
+}
+
+
+if (pos==15)
+{  
+  //g=g-0.2;
+ 
+  std::vector<double> joints;
+  joints = move_group_interface.getCurrentJointValues();
+  //printf(joints);
+  joints.at(5)=tau/2;
+  move_group_interface.setJointValueTarget(joints);
+  move_group_interface.move();
+  
+}
+if (pos==10)
 {
  
   
@@ -201,7 +475,7 @@ if (pos==3)
   msg.data = "close";
   pub.publish(msg);
 
-  printf("\n 1. Continuar\n 9. Terminar\n");
+  printf("\n 1. Continuar\n 9. Menu principal\n");
   setbuf(stdin,NULL);
   scanf("%d",&con);
   if (con==9)
@@ -212,7 +486,7 @@ if (pos==3)
 }
 
 
-if (pos==4)
+if (pos==11)
 {
  
   
@@ -229,7 +503,7 @@ if (pos==4)
   msg.data = "open";
   pub.publish(msg);
 
-  printf("\n 1. Continuar\n 9. Terminar\n");
+  printf("\n 1. Continuar\n 9. Menu principal\n");
   setbuf(stdin,NULL);
   scanf("%d",&con);
   if (con==9)
@@ -241,7 +515,7 @@ if (pos==4)
  
   
 }
-
+   
   ros::shutdown();
   return 0;
 }
