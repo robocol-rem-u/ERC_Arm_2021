@@ -44,15 +44,15 @@ roslaunch simulation simulator.launch
 ### Manipular Simulacion mediante codigo
 
 Para ejecutar el codigo y manipular la simulacion seguir los siguientes pasos:
-1. Abrir una nueva terminar y ejecutar :
+1. Abrir un nuevo terminar y ejecutar los siguientes comandos:
  ```console
 cd /ERC_Arm_2021
 source devel/setup.bash
 rosrun simulation gripper.py
 ```
-Esto inicializa el topico /gripper_command. 
+Esto inicializa el topico /gripper_command y asi poder usarlo desde el codigo principal. 
 
-2. Ejecutar codigo principal. 
+2. Abrir un nuevo terminal y ejecutar los siguientes comandos para el codigo principal. 
 
  ```console
 cd /ERC_Arm_2021
