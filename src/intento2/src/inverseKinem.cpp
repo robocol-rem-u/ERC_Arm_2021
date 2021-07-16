@@ -143,7 +143,7 @@ int main(int argc, char** argv)
   target_pose1.orientation.w = 2.0;
   target_pose1.position.x = pX;
   target_pose1.position.y = pY;
-  target_pose1.position.z = pz;
+  target_pose1.position.z = pZ;
   move_group_interface.setPoseTarget(target_pose1);
 
   // Now, we call the planner to compute the plan and visualize it.
