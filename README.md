@@ -17,7 +17,7 @@ Para descargar e instalar la simulacion ejecutar los siguientes comandos:
 ```console
 sudo apt-get update
 rosdep init && rosdep update
-git clone https://github.com/Michal-Bidzinski/ERC_2021_simulator.git
+git clone -b develop https://github.com/robocol-rem-u/ERC_Arm_2021.git
 rosdep update
 rosdep install --from-paths /ERC_Arm_2021/src/ --ignore-src --rosdistro melodic -r -y
 sudo apt install ros-melodic-teleop* -y
