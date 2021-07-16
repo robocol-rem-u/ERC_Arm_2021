@@ -48,7 +48,7 @@ Para ejecutar el codigo y manipular la simulacion seguir los siguientes pasos:
  ```console
 cd /ERC_Arm_2021
 source devel/setup.bash
-rosrun simulation gripper.py
+rosrun Kinematics task_1
 ```
 Esto inicializa el topico /gripper_command y asi poder usarlo desde el codigo principal. 
 

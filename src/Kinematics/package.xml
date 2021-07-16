@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>intento2</name>
+  <name>Kinematics</name>
   <version>0.0.0</version>
-  <description>The intento2</description>
+  <description>The Kinematics</description>
   <license>TODO</license>
 
   <maintainer email="franz@todo.todo">Franz Luepke</maintainer>

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.1.3)
 # cmake_minimum_required(VERSION 2.8.3)
-project(intento2)
+project(Kinematics)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -266,19 +266,19 @@ include
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(inverseKinem src/inverseKinem.cpp)
-target_link_libraries(inverseKinem ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+add_executable(task_1 src/task_1.cpp)
+target_link_libraries(task_1 ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 
-install(TARGETS inverseKinem DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+install(TARGETS task_1 DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
 
 
-add_executable(inicialPose src/inicialPose.cpp)
-target_link_libraries(inicialPose ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+##add_executable(inicialPose src/inicialPose.cpp)
+##target_link_libraries(inicialPose ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 
-install(TARGETS inicialPose DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
-install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+##install(TARGETS inicialPose DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+##install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
 
 
