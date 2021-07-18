@@ -1,0 +1,8 @@
+prefix=/home/diego/ERC_2021/devel
+
+Name: ur_driver
+Description: Description of ur_driver
+Version: 1.2.7
+Cflags: -I/home/diego/ERC_2021/devel/include
+Libs: -L${prefix}/lib 
+Requires: dynamic_reconfigure
