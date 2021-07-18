@@ -50,7 +50,7 @@ Para ejecutar el codigo y manipular la simulacion:
  ```console
 cd /ERC_Arm_2021
 source devel/setup.bash
-rosrun intento2 inverseKinem
+rosrun Kinematics task_1
 ```
 Desde acá se puede  manipular tanto el brazo como el gripper.
 
