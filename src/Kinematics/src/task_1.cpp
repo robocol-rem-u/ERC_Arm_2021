@@ -436,6 +436,43 @@ if (pos==16)
   // Ejecuta el plan.
   move_group_interface.move();
 }
+if (pos==17)
+{
+// empuja en un angulo de 18
+  geometry_msgs::PoseStamped actual;
+  actual=move_group_interface.getCurrentPose();
+  tf2::Quaternion q; 
+  
+
+  q.setRPY(tau/4, 0.0 , -tau/20);
+  q = q.normalize();
+  
+
+  geometry_msgs::Pose target_pose1;
+  target_pose1.orientation.x = q[0];
+  target_pose1.orientation.y = q[1];
+  target_pose1.orientation.z = q[2]; 
+  target_pose1.orientation.w = q[3]; 
+
+  target_pose1.position.x = actual.pose.position.x+0.003;
+  target_pose1.position.y = actual.pose.position.y;
+  target_pose1.position.z = actual.pose.position.z+0.009;
+  move_group_interface.setPoseTarget(target_pose1);
+
+  // Crea un nuevo plan para la trayectoria.
+
+  moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+
+  //Planea a la posicion objectivo.
+
+  bool success = (move_group_interface.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+
+  // Informacion
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 (pose goal) %s", success ? "" : "FAILED");
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 as trajectory line");
+  // Ejecuta el plan.
+  move_group_interface.move();
+}
 
 if (pos==12)
 { 
