@@ -19,14 +19,14 @@ sudo apt-get update
 rosdep init && rosdep update
 git clone -b develop https://github.com/robocol-rem-u/ERC_Arm_2021.git
 rosdep update
-rosdep install --from-paths /ERC_Arm_2021/src/ --ignore-src --rosdistro melodic -r -y
+rosdep install --from-paths ~/ERC_Arm_2021/src/ --ignore-src --rosdistro melodic -r -y
 sudo apt install ros-melodic-teleop* -y
 sudo apt install ros-melodic-joy* -y
 sudo apt install ros-melodic-aruco-ros* -y
 sudo apt-get install ros-melodic-ros-controllers* -y
 sudo apt install -y python-pip
 sudo apt install -y python3-pip
-cd /ERC_Arm_2021
+cd ~/ERC_Arm_2021
 catkin_make
 source /opt/ros/melodic/setup.bash
 ```
