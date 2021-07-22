@@ -273,24 +273,15 @@ install(TARGETS task_1 DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
 
+add_executable(task_2 src/task_2.cpp)
+target_link_libraries(task_2 ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 
-##add_executable(inicialPose src/inicialPose.cpp)
-##target_link_libraries(inicialPose ${catkin_LIBRARIES} ${Boost_LIBRARIES})
-
-##install(TARGETS inicialPose DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
-##install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
-
+install(TARGETS task_2 DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
 
 
 
-
-
-##add_executable(codigoFranz src/codigoFranz.cpp)
-##target_link_libraries(codigoFranz ${catkin_LIBRARIES} ${Boost_LIBRARIES})
-
-##install(TARGETS codigoFranz DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
-##install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
 
 
