@@ -406,7 +406,7 @@ if (pos==16)
 
   tf2::Quaternion q; 
   
-// define la orientacion en grados de x,y,z
+// define la orientacion en grados de y,z,x
   q.setRPY(tau/4, 0.0 , -tau/20);
   q = q.normalize();
   
