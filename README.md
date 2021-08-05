@@ -27,7 +27,7 @@ sudo apt install ros-melodic-aruco-ros* -y
 sudo apt-get install ros-melodic-ros-controllers* -y
 sudo apt install -y python-pip
 sudo apt install -y python3-pip
-
+```
 NOTA IMPORTANTE: ANTES DE CONTINUAR CON LOS SIGUIENTES COMANDOS Y PARA EVITAR ERRORES EN LA SIMULACION O EL DOCKER ELIMINAR LA CARPETA "ERC_Arm_2021/build" y "ERC_Arm_2021/devel".  
 
 ```console
