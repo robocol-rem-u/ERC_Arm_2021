@@ -14,6 +14,7 @@ http://docs.ros.org/melodic/api/moveit_tutorials/html/doc/getting_started/gettin
 
 Para descargar e instalar la simulacion ejecutar los siguientes comandos:
 
+
 ```console
 sudo apt-get update
 rosdep init && rosdep update
@@ -26,6 +27,10 @@ sudo apt install ros-melodic-aruco-ros* -y
 sudo apt-get install ros-melodic-ros-controllers* -y
 sudo apt install -y python-pip
 sudo apt install -y python3-pip
+
+NOTA IMPORTANTE: ANTES DE CONTINUAR CON LOS SIGUIENTES COMANDOS Y PARA EVITAR ERRORES EN LA SIMULACION O EL DOCKER ELIMINAR LA CARPETA "ERC_Arm_2021/build" y "ERC_Arm_2021/devel".  
+
+```console
 cd ~/ERC_Arm_2021
 catkin_make
 source /opt/ros/melodic/setup.bash
@@ -33,6 +38,7 @@ source /opt/ros/melodic/setup.bash
 ## Launch files
 
 ### Ejecutar simulación
+
 
 Para ejecutar la simulacion usar:
 
