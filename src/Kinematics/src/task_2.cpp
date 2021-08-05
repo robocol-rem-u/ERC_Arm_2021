@@ -83,19 +83,8 @@ int main(int argc, char** argv)
 
 // Pedir las posiciones reales a vision para cuando ya no se haga la simulacion >:(
  int pos;
- double pX;
- double pY;
- double pZ;
- double d;
- double c;
- double g;
 
- pX=0.262;
- pY=0.002;
- pZ=0.273;
- d=0.082;
- c=0.082;
- g=0;
+
  pos=0;
 
 // Se inicia elcodigo esperando conmandos para ejecutar planes

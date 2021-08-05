@@ -198,6 +198,21 @@ bond_generate_messages_nodejs/fast:
 .PHONY : bond_generate_messages_nodejs/fast
 
 # Convenience name for target.
+Kinematics/CMakeFiles/exe_task_1.dir/rule:
+	cd /home/diego/ERC_2021/build && $(MAKE) -f CMakeFiles/Makefile2 Kinematics/CMakeFiles/exe_task_1.dir/rule
+.PHONY : Kinematics/CMakeFiles/exe_task_1.dir/rule
+
+# Convenience name for target.
+exe_task_1: Kinematics/CMakeFiles/exe_task_1.dir/rule
+
+.PHONY : exe_task_1
+
+# fast build rule for target.
+exe_task_1/fast:
+	cd /home/diego/ERC_2021/build && $(MAKE) -f Kinematics/CMakeFiles/exe_task_1.dir/build.make Kinematics/CMakeFiles/exe_task_1.dir/build
+.PHONY : exe_task_1/fast
+
+# Convenience name for target.
 Kinematics/CMakeFiles/bond_generate_messages_lisp.dir/rule:
 	cd /home/diego/ERC_2021/build && $(MAKE) -f CMakeFiles/Makefile2 Kinematics/CMakeFiles/bond_generate_messages_lisp.dir/rule
 .PHONY : Kinematics/CMakeFiles/bond_generate_messages_lisp.dir/rule
@@ -346,6 +361,21 @@ visualization_msgs_generate_messages_eus: Kinematics/CMakeFiles/visualization_ms
 visualization_msgs_generate_messages_eus/fast:
 	cd /home/diego/ERC_2021/build && $(MAKE) -f Kinematics/CMakeFiles/visualization_msgs_generate_messages_eus.dir/build.make Kinematics/CMakeFiles/visualization_msgs_generate_messages_eus.dir/build
 .PHONY : visualization_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+Kinematics/CMakeFiles/exe_task_3.dir/rule:
+	cd /home/diego/ERC_2021/build && $(MAKE) -f CMakeFiles/Makefile2 Kinematics/CMakeFiles/exe_task_3.dir/rule
+.PHONY : Kinematics/CMakeFiles/exe_task_3.dir/rule
+
+# Convenience name for target.
+exe_task_3: Kinematics/CMakeFiles/exe_task_3.dir/rule
+
+.PHONY : exe_task_3
+
+# fast build rule for target.
+exe_task_3/fast:
+	cd /home/diego/ERC_2021/build && $(MAKE) -f Kinematics/CMakeFiles/exe_task_3.dir/build.make Kinematics/CMakeFiles/exe_task_3.dir/build
+.PHONY : exe_task_3/fast
 
 # Convenience name for target.
 Kinematics/CMakeFiles/task_2.dir/rule:
@@ -633,6 +663,21 @@ object_recognition_msgs_generate_messages_cpp/fast:
 .PHONY : object_recognition_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
+Kinematics/CMakeFiles/task_3.dir/rule:
+	cd /home/diego/ERC_2021/build && $(MAKE) -f CMakeFiles/Makefile2 Kinematics/CMakeFiles/task_3.dir/rule
+.PHONY : Kinematics/CMakeFiles/task_3.dir/rule
+
+# Convenience name for target.
+task_3: Kinematics/CMakeFiles/task_3.dir/rule
+
+.PHONY : task_3
+
+# fast build rule for target.
+task_3/fast:
+	cd /home/diego/ERC_2021/build && $(MAKE) -f Kinematics/CMakeFiles/task_3.dir/build.make Kinematics/CMakeFiles/task_3.dir/build
+.PHONY : task_3/fast
+
+# Convenience name for target.
 Kinematics/CMakeFiles/object_recognition_msgs_generate_messages_lisp.dir/rule:
 	cd /home/diego/ERC_2021/build && $(MAKE) -f CMakeFiles/Makefile2 Kinematics/CMakeFiles/object_recognition_msgs_generate_messages_lisp.dir/rule
 .PHONY : Kinematics/CMakeFiles/object_recognition_msgs_generate_messages_lisp.dir/rule
@@ -827,6 +872,60 @@ nodelet_generate_messages_eus/fast:
 	cd /home/diego/ERC_2021/build && $(MAKE) -f Kinematics/CMakeFiles/nodelet_generate_messages_eus.dir/build.make Kinematics/CMakeFiles/nodelet_generate_messages_eus.dir/build
 .PHONY : nodelet_generate_messages_eus/fast
 
+src/exe_task_1.o: src/exe_task_1.cpp.o
+
+.PHONY : src/exe_task_1.o
+
+# target to build an object file
+src/exe_task_1.cpp.o:
+	cd /home/diego/ERC_2021/build && $(MAKE) -f Kinematics/CMakeFiles/exe_task_1.dir/build.make Kinematics/CMakeFiles/exe_task_1.dir/src/exe_task_1.cpp.o
+.PHONY : src/exe_task_1.cpp.o
+
+src/exe_task_1.i: src/exe_task_1.cpp.i
+
+.PHONY : src/exe_task_1.i
+
+# target to preprocess a source file
+src/exe_task_1.cpp.i:
+	cd /home/diego/ERC_2021/build && $(MAKE) -f Kinematics/CMakeFiles/exe_task_1.dir/build.make Kinematics/CMakeFiles/exe_task_1.dir/src/exe_task_1.cpp.i
+.PHONY : src/exe_task_1.cpp.i
+
+src/exe_task_1.s: src/exe_task_1.cpp.s
+
+.PHONY : src/exe_task_1.s
+
+# target to generate assembly for a file
+src/exe_task_1.cpp.s:
+	cd /home/diego/ERC_2021/build && $(MAKE) -f Kinematics/CMakeFiles/exe_task_1.dir/build.make Kinematics/CMakeFiles/exe_task_1.dir/src/exe_task_1.cpp.s
+.PHONY : src/exe_task_1.cpp.s
+
+src/exe_task_3.o: src/exe_task_3.cpp.o
+
+.PHONY : src/exe_task_3.o
+
+# target to build an object file
+src/exe_task_3.cpp.o:
+	cd /home/diego/ERC_2021/build && $(MAKE) -f Kinematics/CMakeFiles/exe_task_3.dir/build.make Kinematics/CMakeFiles/exe_task_3.dir/src/exe_task_3.cpp.o
+.PHONY : src/exe_task_3.cpp.o
+
+src/exe_task_3.i: src/exe_task_3.cpp.i
+
+.PHONY : src/exe_task_3.i
+
+# target to preprocess a source file
+src/exe_task_3.cpp.i:
+	cd /home/diego/ERC_2021/build && $(MAKE) -f Kinematics/CMakeFiles/exe_task_3.dir/build.make Kinematics/CMakeFiles/exe_task_3.dir/src/exe_task_3.cpp.i
+.PHONY : src/exe_task_3.cpp.i
+
+src/exe_task_3.s: src/exe_task_3.cpp.s
+
+.PHONY : src/exe_task_3.s
+
+# target to generate assembly for a file
+src/exe_task_3.cpp.s:
+	cd /home/diego/ERC_2021/build && $(MAKE) -f Kinematics/CMakeFiles/exe_task_3.dir/build.make Kinematics/CMakeFiles/exe_task_3.dir/src/exe_task_3.cpp.s
+.PHONY : src/exe_task_3.cpp.s
+
 src/task_1.o: src/task_1.cpp.o
 
 .PHONY : src/task_1.o
@@ -881,6 +980,33 @@ src/task_2.cpp.s:
 	cd /home/diego/ERC_2021/build && $(MAKE) -f Kinematics/CMakeFiles/task_2.dir/build.make Kinematics/CMakeFiles/task_2.dir/src/task_2.cpp.s
 .PHONY : src/task_2.cpp.s
 
+src/task_3.o: src/task_3.cpp.o
+
+.PHONY : src/task_3.o
+
+# target to build an object file
+src/task_3.cpp.o:
+	cd /home/diego/ERC_2021/build && $(MAKE) -f Kinematics/CMakeFiles/task_3.dir/build.make Kinematics/CMakeFiles/task_3.dir/src/task_3.cpp.o
+.PHONY : src/task_3.cpp.o
+
+src/task_3.i: src/task_3.cpp.i
+
+.PHONY : src/task_3.i
+
+# target to preprocess a source file
+src/task_3.cpp.i:
+	cd /home/diego/ERC_2021/build && $(MAKE) -f Kinematics/CMakeFiles/task_3.dir/build.make Kinematics/CMakeFiles/task_3.dir/src/task_3.cpp.i
+.PHONY : src/task_3.cpp.i
+
+src/task_3.s: src/task_3.cpp.s
+
+.PHONY : src/task_3.s
+
+# target to generate assembly for a file
+src/task_3.cpp.s:
+	cd /home/diego/ERC_2021/build && $(MAKE) -f Kinematics/CMakeFiles/task_3.dir/build.make Kinematics/CMakeFiles/task_3.dir/src/task_3.cpp.s
+.PHONY : src/task_3.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -892,6 +1018,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... moveit_ros_manipulation_gencfg"
 	@echo "... bond_generate_messages_nodejs"
+	@echo "... exe_task_1"
 	@echo "... bond_generate_messages_lisp"
 	@echo "... bond_generate_messages_eus"
 	@echo "... moveit_msgs_generate_messages_cpp"
@@ -903,6 +1030,7 @@ help:
 	@echo "... graph_msgs_generate_messages_eus"
 	@echo "... nodelet_generate_messages_nodejs"
 	@echo "... visualization_msgs_generate_messages_eus"
+	@echo "... exe_task_3"
 	@echo "... task_2"
 	@echo "... shape_msgs_generate_messages_py"
 	@echo "... shape_msgs_generate_messages_nodejs"
@@ -923,6 +1051,7 @@ help:
 	@echo "... moveit_msgs_generate_messages_nodejs"
 	@echo "... moveit_msgs_generate_messages_py"
 	@echo "... object_recognition_msgs_generate_messages_cpp"
+	@echo "... task_3"
 	@echo "... object_recognition_msgs_generate_messages_lisp"
 	@echo "... visualization_msgs_generate_messages_cpp"
 	@echo "... object_recognition_msgs_generate_messages_nodejs"
@@ -938,12 +1067,21 @@ help:
 	@echo "... bond_generate_messages_py"
 	@echo "... nodelet_generate_messages_cpp"
 	@echo "... nodelet_generate_messages_eus"
+	@echo "... src/exe_task_1.o"
+	@echo "... src/exe_task_1.i"
+	@echo "... src/exe_task_1.s"
+	@echo "... src/exe_task_3.o"
+	@echo "... src/exe_task_3.i"
+	@echo "... src/exe_task_3.s"
 	@echo "... src/task_1.o"
 	@echo "... src/task_1.i"
 	@echo "... src/task_1.s"
 	@echo "... src/task_2.o"
 	@echo "... src/task_2.i"
 	@echo "... src/task_2.s"
+	@echo "... src/task_3.o"
+	@echo "... src/task_3.i"
+	@echo "... src/task_3.s"
 .PHONY : help
 
 

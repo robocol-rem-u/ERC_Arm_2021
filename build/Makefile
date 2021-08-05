@@ -1923,6 +1923,19 @@ bond_generate_messages_nodejs/fast:
 .PHONY : bond_generate_messages_nodejs/fast
 
 #=============================================================================
+# Target rules for targets named exe_task_1
+
+# Build rule for target.
+exe_task_1: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 exe_task_1
+.PHONY : exe_task_1
+
+# fast build rule for target.
+exe_task_1/fast:
+	$(MAKE) -f Kinematics/CMakeFiles/exe_task_1.dir/build.make Kinematics/CMakeFiles/exe_task_1.dir/build
+.PHONY : exe_task_1/fast
+
+#=============================================================================
 # Target rules for targets named bond_generate_messages_lisp
 
 # Build rule for target.
@@ -2051,6 +2064,19 @@ visualization_msgs_generate_messages_eus: cmake_check_build_system
 visualization_msgs_generate_messages_eus/fast:
 	$(MAKE) -f Kinematics/CMakeFiles/visualization_msgs_generate_messages_eus.dir/build.make Kinematics/CMakeFiles/visualization_msgs_generate_messages_eus.dir/build
 .PHONY : visualization_msgs_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named exe_task_3
+
+# Build rule for target.
+exe_task_3: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 exe_task_3
+.PHONY : exe_task_3
+
+# fast build rule for target.
+exe_task_3/fast:
+	$(MAKE) -f Kinematics/CMakeFiles/exe_task_3.dir/build.make Kinematics/CMakeFiles/exe_task_3.dir/build
+.PHONY : exe_task_3/fast
 
 #=============================================================================
 # Target rules for targets named task_2
@@ -2298,6 +2324,19 @@ object_recognition_msgs_generate_messages_cpp: cmake_check_build_system
 object_recognition_msgs_generate_messages_cpp/fast:
 	$(MAKE) -f Kinematics/CMakeFiles/object_recognition_msgs_generate_messages_cpp.dir/build.make Kinematics/CMakeFiles/object_recognition_msgs_generate_messages_cpp.dir/build
 .PHONY : object_recognition_msgs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named task_3
+
+# Build rule for target.
+task_3: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 task_3
+.PHONY : task_3
+
+# fast build rule for target.
+task_3/fast:
+	$(MAKE) -f Kinematics/CMakeFiles/task_3.dir/build.make Kinematics/CMakeFiles/task_3.dir/build
+.PHONY : task_3/fast
 
 #=============================================================================
 # Target rules for targets named object_recognition_msgs_generate_messages_lisp
@@ -2876,6 +2915,7 @@ help:
 	@echo "... _run_tests_ur_gazebo_roslaunch-check_tests_roslaunch_test.xml"
 	@echo "... moveit_ros_manipulation_gencfg"
 	@echo "... bond_generate_messages_nodejs"
+	@echo "... exe_task_1"
 	@echo "... bond_generate_messages_lisp"
 	@echo "... bond_generate_messages_eus"
 	@echo "... moveit_msgs_generate_messages_cpp"
@@ -2886,6 +2926,7 @@ help:
 	@echo "... graph_msgs_generate_messages_eus"
 	@echo "... nodelet_generate_messages_nodejs"
 	@echo "... visualization_msgs_generate_messages_eus"
+	@echo "... exe_task_3"
 	@echo "... task_2"
 	@echo "... shape_msgs_generate_messages_py"
 	@echo "... shape_msgs_generate_messages_nodejs"
@@ -2905,6 +2946,7 @@ help:
 	@echo "... moveit_msgs_generate_messages_nodejs"
 	@echo "... moveit_msgs_generate_messages_py"
 	@echo "... object_recognition_msgs_generate_messages_cpp"
+	@echo "... task_3"
 	@echo "... object_recognition_msgs_generate_messages_lisp"
 	@echo "... visualization_msgs_generate_messages_cpp"
 	@echo "... object_recognition_msgs_generate_messages_nodejs"

@@ -281,9 +281,22 @@ install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
 
 add_executable(task_3 src/task_3.cpp)
-target_link_libraries(task_2 ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+target_link_libraries(task_3 ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 
 install(TARGETS task_3 DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+
+
+add_executable(exe_task_1 src/exe_task_1.cpp)
+target_link_libraries(exe_task_1 ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+
+install(TARGETS exe_task_1 DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+
+add_executable(exe_task_3 src/exe_task_3.cpp)
+target_link_libraries(exe_task_3 ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+
+install(TARGETS exe_task_3 DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
 
