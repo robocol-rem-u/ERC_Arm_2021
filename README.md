@@ -43,15 +43,16 @@ roslaunch simulation simulator.launch
 
 ### Manipular Simulacion mediante codigo
 
-Para ejecutar el codigo y manipular la simulacion:
-
- Abrir un nuevo terminal y ejecutar los siguientes comandos para el codigo principal. 
+para ejecutar otro nodo es necesario abrir un nuevo terminal
+Para correr cada una de las tareas ejecutar los siguientes comandos :
 
  ```console
 cd /ERC_Arm_2021
 source devel/setup.bash
-rosrun Kinematics task_1
+rosrun Kinematics exe_task_1
+rosrun Kinematics exe_task_2
+rosrun Kinematics exe_task_3
 ```
-Desde acá se puede  manipular tanto el brazo como el gripper.
+Cada rosrun ejecuta una tarea.
 
 

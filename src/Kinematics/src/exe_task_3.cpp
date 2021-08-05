@@ -25,8 +25,11 @@
 // tau = 2*pi. Un tau es una rotacion en radianes.
 const double tau = 2 * M_PI;
 
-
-
+//Codigo para crear el topico
+void chatterCallback(const std_msgs::String::ConstPtr& msg)
+  {
+     ROS_INFO("I heard: [%s]", msg->data.c_str());
+  }
 
 void Inicial_Pose(
 moveit::planning_interface::MoveGroupInterface &move_group_interface)
@@ -204,8 +207,11 @@ int main(int argc, char** argv)
   
   //Inicializa el nodo de ros
 
-  ros::init(argc, argv, "move_group_interface_tutorial");
+  ros::init(argc, argv, "Task_1_Topic");
   ros::NodeHandle node_handle;
+
+  ros::Subscriber sub = node_handle.subscribe("chatter", 1000, chatterCallback);
+
   ros::AsyncSpinner spinner(1);
   spinner.start();
 
