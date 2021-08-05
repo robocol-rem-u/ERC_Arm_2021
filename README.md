@@ -41,7 +41,7 @@ source devel/setup.bash
 roslaunch simulation simulator.launch
 ```
 
-### Manipular Simulacion mediante codigo
+### Ejecutables
 
 para ejecutar otro nodo es necesario abrir un nuevo terminal
 Para correr cada una de las tareas ejecutar los siguientes comandos :

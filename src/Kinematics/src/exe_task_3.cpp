@@ -209,7 +209,7 @@ int main(int argc, char** argv)
 
   ros::init(argc, argv, "Task_1_Topic");
   ros::NodeHandle node_handle;
-
+   
   ros::Subscriber sub = node_handle.subscribe("chatter", 1000, chatterCallback);
 
   ros::AsyncSpinner spinner(1);
