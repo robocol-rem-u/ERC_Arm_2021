@@ -299,6 +299,12 @@ target_link_libraries(exe_task_3 ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 install(TARGETS exe_task_3 DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
+add_executable(calibration src/calibration.cpp)
+target_link_libraries(calibration ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+
+install(TARGETS calibration DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+
 
 
 

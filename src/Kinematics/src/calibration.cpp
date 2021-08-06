@@ -24,20 +24,11 @@
 
 // tau = 2*pi. Un tau es una rotacion en radianes.
 const double tau = 2 * M_PI;
-bool data=false;
 
 //Codigo para crear el topico
 void chatterCallback(const std_msgs::String::ConstPtr& msg)
   {
      ROS_INFO("I heard: [%s]", msg->data.c_str());
-     std::string datos = msg->data;
-     
-     if(datos=="star")
-     {
-      printf("%s \n",datos.c_str());
-      data=true;
-     }
-     
   }
 
 void Inicial_Pose(
@@ -90,14 +81,14 @@ moveit::planning_interface::MoveGroupInterface &move_group_interface_2)
 
 }
 
-void go_down(
+void go_close(
 moveit::planning_interface::MoveGroupInterface &move_group_interface)
 {
 
  tf2::Quaternion q; 
   
 // define la orientacion en grados de y,z,x
-  q.setRPY(0, tau/4 , tau/8);
+  q.setRPY(tau/4, 0 , 0);
   q = q.normalize();
   
 
@@ -107,9 +98,9 @@ moveit::planning_interface::MoveGroupInterface &move_group_interface)
   target_pose1.orientation.z = q[2]; 
   target_pose1.orientation.w = q[3]; 
 
-  target_pose1.position.x = 0.206;
-  target_pose1.position.y = 0.316;
-  target_pose1.position.z = 0.110;
+  target_pose1.position.x = 0.260;
+  target_pose1.position.y = 0.084;
+  target_pose1.position.z = 0.417;
   move_group_interface.setPoseTarget(target_pose1);
 
   // Crea un nuevo plan para la trayectoria.
@@ -129,27 +120,33 @@ moveit::planning_interface::MoveGroupInterface &move_group_interface)
 }
 
 
-void go_back(
+void right(
 moveit::planning_interface::MoveGroupInterface &move_group_interface)
 {
-//Se mueve apuntando al panel izquierdo. 
+//mover a la derecha. 
   
   tf2::Quaternion q; 
   
 // define la orientacion en grados de y,z,x
-  q.setRPY(tau/4, 0 , tau/20);
+  q.setRPY(tau/4, 0 , 0);
   q = q.normalize();
   
 
+  
+  
+  geometry_msgs::PoseStamped actual;
+  actual=move_group_interface.getCurrentPose();
+  
   geometry_msgs::Pose target_pose1;
+  
   target_pose1.orientation.x = q[0];
   target_pose1.orientation.y = q[1];
   target_pose1.orientation.z = q[2]; 
   target_pose1.orientation.w = q[3]; 
-
-  target_pose1.position.x = 0.137;
-  target_pose1.position.y = 0.191;
-  target_pose1.position.z = 0.351;
+  
+  target_pose1.position.x = actual.pose.position.x;
+  target_pose1.position.y = actual.pose.position.y-0.008;
+  target_pose1.position.z = actual.pose.position.z;
   move_group_interface.setPoseTarget(target_pose1);
 
   // Crea un nuevo plan para la trayectoria.
@@ -167,27 +164,33 @@ moveit::planning_interface::MoveGroupInterface &move_group_interface)
   move_group_interface.move();
 }
 
-void go_to_panel(
+void left(
 moveit::planning_interface::MoveGroupInterface &move_group_interface)
 {
-//Se mueve apuntando al panel izquierdo. 
+//mover a la izuiqerda
   
   tf2::Quaternion q; 
   
 // define la orientacion en grados de y,z,x
-  q.setRPY(tau/4, 0 , tau/20);
+  q.setRPY(tau/4, 0 , 0);
   q = q.normalize();
   
 
+  
+  
+  geometry_msgs::PoseStamped actual;
+  actual=move_group_interface.getCurrentPose();
+  
   geometry_msgs::Pose target_pose1;
+  
   target_pose1.orientation.x = q[0];
   target_pose1.orientation.y = q[1];
   target_pose1.orientation.z = q[2]; 
   target_pose1.orientation.w = q[3]; 
-
-  target_pose1.position.x = 0.212;
-  target_pose1.position.y = 0.215;
-  target_pose1.position.z = 0.351;
+  
+  target_pose1.position.x = actual.pose.position.x;
+  target_pose1.position.y = actual.pose.position.y+0.008;
+  target_pose1.position.z = actual.pose.position.z;
   move_group_interface.setPoseTarget(target_pose1);
 
   // Crea un nuevo plan para la trayectoria.
@@ -206,6 +209,92 @@ moveit::planning_interface::MoveGroupInterface &move_group_interface)
 }
 
 
+void down(
+moveit::planning_interface::MoveGroupInterface &move_group_interface)
+{
+//mover a la izuiqerda
+  
+  tf2::Quaternion q; 
+  
+// define la orientacion en grados de y,z,x
+ q.setRPY(tau/4, 0 , 0);
+  q = q.normalize();
+  
+
+  
+  
+  geometry_msgs::PoseStamped actual;
+  actual=move_group_interface.getCurrentPose();
+  
+  geometry_msgs::Pose target_pose1;
+  
+  target_pose1.orientation.x = q[0];
+  target_pose1.orientation.y = q[1];
+  target_pose1.orientation.z = q[2]; 
+  target_pose1.orientation.w = q[3]; 
+  
+  target_pose1.position.x = actual.pose.position.x;
+  target_pose1.position.y = actual.pose.position.y;
+  target_pose1.position.z = actual.pose.position.z-0.008;
+  move_group_interface.setPoseTarget(target_pose1);
+
+  // Crea un nuevo plan para la trayectoria.
+
+  moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+
+  //Planea a la posicion objectivo.
+
+  bool success = (move_group_interface.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+
+  // Informacion
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 (pose goal) %s", success ? "" : "FAILED");
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 as trajectory line");
+  // Ejecuta el plan.
+  move_group_interface.move();
+}
+
+void up(
+moveit::planning_interface::MoveGroupInterface &move_group_interface)
+{
+//mover a la izuiqerda
+  
+  tf2::Quaternion q; 
+  
+// define la orientacion en grados de y,z,x
+  q.setRPY(tau/4, 0 , 0);
+  q = q.normalize();
+  
+
+ 
+  geometry_msgs::PoseStamped actual;
+  actual=move_group_interface.getCurrentPose();
+  
+  geometry_msgs::Pose target_pose1;
+  
+  target_pose1.orientation.x = q[0];
+  target_pose1.orientation.y = q[1];
+  target_pose1.orientation.z = q[2]; 
+  target_pose1.orientation.w = q[3]; 
+  
+  target_pose1.position.x = actual.pose.position.x;
+  target_pose1.position.y = actual.pose.position.y;
+  target_pose1.position.z = actual.pose.position.z+0.008;
+  move_group_interface.setPoseTarget(target_pose1);
+
+  // Crea un nuevo plan para la trayectoria.
+
+  moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+
+  //Planea a la posicion objectivo.
+
+  bool success = (move_group_interface.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+
+  // Informacion
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 (pose goal) %s", success ? "" : "FAILED");
+  ROS_INFO_NAMED("tutorial", "Visualizing plan 1 as trajectory line");
+  // Ejecuta el plan.
+  move_group_interface.move();
+}
 
 
 
@@ -218,12 +307,12 @@ int main(int argc, char** argv)
 
   ros::init(argc, argv, "Task_1_Topic");
   ros::NodeHandle node_handle;
-  ros::Subscriber sub = node_handle.subscribe("/robocol/topico", 1000, chatterCallback);
+   
+  ros::Subscriber sub = node_handle.subscribe("chatter", 1000, chatterCallback);
 
   ros::AsyncSpinner spinner(1);
   spinner.start();
 
-  
   
   // Setup
   
@@ -286,37 +375,50 @@ int main(int argc, char** argv)
   d=0.08;
   c=0.15;
   pos=0;
-  
+   
  
- ros::Rate loop_rate(10);
-   while(ros::ok())
- {
-    if(data)
-    {
-    Inicial_Pose(move_group_interface);
-    //open_gripper(move_group_interface_2);
+  Inicial_Pose(move_group_interface);
+  close_gripper(move_group_interface_2);
+  go_close(move_group_interface);
+  
+  while(pos!=9)
+  {
+   printf("\n\n Selecciona una acción \n\n 1. Arriba \n 2. Abajo \n 3. Derecha \n 4. Izquierda \n 9. Salir\n");
+   setbuf(stdin,NULL);
+   scanf("%d",&pos);
+  if(pos==1)
+  {
+   up(move_group_interface);
+  }
+  if(pos==2)
+  {
+   down(move_group_interface);
+  }
 
-    go_down(move_group_interface);
-    close_gripper(move_group_interface_2);
+  if(pos==3)
+  {
+   right(move_group_interface);
+  }
 
-    go_back(move_group_interface);
+  if(pos==4)
+  {
+   left(move_group_interface);
+  }
+  
+  
 
-    go_to_panel(move_group_interface);
+
+   
+  }
+
+  open_gripper(move_group_interface_2);
     
-    open_gripper(move_group_interface_2);
-    go_back(move_group_interface);
-
-    Inicial_Pose(move_group_interface);
-    }
-    ros::spinOnce();
-    loop_rate.sleep();
-    
- }
+ 
     
 
 
 
-  //ros::shutdown();
+  ros::shutdown();
   return 0;
 }
 
