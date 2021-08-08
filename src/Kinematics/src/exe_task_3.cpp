@@ -218,7 +218,7 @@ int main(int argc, char** argv)
 
   ros::init(argc, argv, "Task_1_Topic");
   ros::NodeHandle node_handle;
-  ros::Subscriber sub = node_handle.subscribe("/robocol/topico", 1000, chatterCallback);
+  //ros::Subscriber sub = node_handle.subscribe("/robocol/topico", 1000, chatterCallback);
 
   ros::AsyncSpinner spinner(1);
   spinner.start();
@@ -288,11 +288,9 @@ int main(int argc, char** argv)
   pos=0;
   
  
- ros::Rate loop_rate(10);
-   while(ros::ok())
- {
-    if(data)
-    {
+ //ros::Rate loop_rate(10);
+  // while(ros::ok())
+ 
     Inicial_Pose(move_group_interface);
     //open_gripper(move_group_interface_2);
 
@@ -311,7 +309,7 @@ int main(int argc, char** argv)
     ros::spinOnce();
     loop_rate.sleep();
     
- }
+ 
     
 
 
