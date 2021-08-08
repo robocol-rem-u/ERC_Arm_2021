@@ -288,7 +288,7 @@ int main(int argc, char** argv)
   pos=0;
   
  
- //ros::Rate loop_rate(10);
+  ros::Rate loop_rate(10);
   // while(ros::ok())
  
     Inicial_Pose(move_group_interface);
@@ -305,7 +305,6 @@ int main(int argc, char** argv)
     go_back(move_group_interface);
 
     Inicial_Pose(move_group_interface);
-    }
     ros::spinOnce();
     loop_rate.sleep();
     
