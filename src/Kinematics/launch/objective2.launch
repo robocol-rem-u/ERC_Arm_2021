@@ -1,0 +1,7 @@
+<launch>
+
+    <node pkg="Kinematics" type="exe_task_1" name="move_group_interface_tutorial" />
+
+    <node pkg="calibracion_vision_pkg" type="calibracion_vision_node.py" name="calibracion_vision"/>
+
+</launch>
