@@ -1,16 +1,17 @@
 #!/usr/bin/env python
 
+import cv_bridge
 import rospy
 from sensor_msgs.msg import Image
 from std_msgs.msg import Float32
-# from std_msgs.msg import bool
-from cv_bridge import CvBridge
+# from std_msgs.msg import Bool
 
 import cv2
 
 def image_recived(msg):
+    print("[INFO]: Image Received, showImage function called")
     # if MOVEMENT_RECIVED:
-    showImage(CvBridge().imgmsg_to_cv2(msg))
+    showImage(cv_bridge.CvBridge().imgmsg_to_cv2(msg))
         # switch_movement_recived()
 
 # def movement_recived(msg):
@@ -25,11 +26,15 @@ def calculate_movement(frame):
     (corners, ids, rejected) = cv2.aruco.detectMarkers(frame, arucoDict, parameters=arucoParams)
 
     if len(corners) > 0:
+
         ids = ids.flatten()
 
         # for (markerCorner, markerID) in zip(corners, ids):
         markerCorner = corners[0]
         markerID = ids[0]
+
+        print("[INFO]: ArUco {} detected".format(markerID))
+
         corners = markerCorner.reshape((4,2))
         topLeft, topRight, bottomRight, bottomLeft = corners
 
@@ -64,14 +69,22 @@ def calculate_movement(frame):
         else:
             print("Perfecto")
             ret = ADELANTE
+    else:
+        print("[INFO]: No ArUco detected")
+
+        ret = NO_AR
         
-        cv2.rectangle(frame, (MIN_CX, MIN_CY), (MAX_CX, MAX_CY), (255,0,0), 3)
+    cv2.rectangle(frame, (MIN_CX, MIN_CY), (MAX_CX, MAX_CY), (255,0,0), 3)
     
-        return ret
+    return ret
 
 def showImage(frame):
 
+    print("[INFO]: Starting ArUco detection")
+
     msg = calculate_movement(frame)
+
+    print("[INFO]: Publishing {}".format(msg))
     pub.publish(msg)
 
     cv2.imshow('image', frame)
@@ -101,13 +114,23 @@ if __name__ == '__main__':
     ARRIBA = 3
     ABAJO = 4
     ADELANTE = 5
+    NO_AR = 6
     
     IMAGE_TOPIC = '/camera_image/color/image_raw'
     # MOVEMENT_TOPIC = '/movement_detected'
     
     # MOVEMENT_RECIVED = True
 
+    if cv_bridge and cv2:
+        print("[INFO]: Libraries OK")
+
+
+
+    print("[INFO]: Starting ArUco Params")
+
     arucoDict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_ARUCO_ORIGINAL)
     arucoParams = cv2.aruco.DetectorParameters_create()
+
+    print("[INFO]: Starting \'calibracion_vision\' node")
 
     main()
