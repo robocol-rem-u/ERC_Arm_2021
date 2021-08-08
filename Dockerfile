@@ -2,7 +2,6 @@ FROM  ghcr.io/europeanroverchallenge/erc-remote-image-base:latest
 
 SHELL ["/bin/bash","-c"]
 
-#Los comandos de robocol
 WORKDIR /home/robocol_folder
 RUN sudo apt-get update
 RUN rm /etc/ros/rosdep/sources.list.d/20-default.list && rosdep init && rosdep update
@@ -19,12 +18,6 @@ RUN sudo apt install -y python3-pip
 RUN python3 -m pip uninstall opencv-python
 RUN python3 -m pip install opencv-contrib-python
 RUN /bin/bash -c '. /opt/ros/melodic/setup.bash; cd /home/robocol_folder/ERC_Arm_2021; catkin build'
-#RUN source /opt/ros/melodic/setup.bash
 RUN echo ". /opt/ros/melodic/setup.bash" >> /etc/bash.bashrc
 RUN echo ". /home/robocol_folder/ERC_Arm_2021/devel/setup.bash" >> /etc/bash.bashrc
 RUN /bin/bash -c '. /home/robocol_folder/ERC_Arm_2021/devel/setup.bash'
-#Los comandos de ERC-Remote-Maintenance-Sim que hagan falta
-#
-#Ejecutar la simulación
-COPY ./start.sh /
-CMD ["/start.sh"]
