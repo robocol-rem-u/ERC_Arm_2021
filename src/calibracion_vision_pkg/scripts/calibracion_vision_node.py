@@ -3,7 +3,7 @@
 import cv_bridge
 import rospy
 from sensor_msgs.msg import Image
-from std_msgs.msg import Float32
+from std_msgs.msg import String
 # from std_msgs.msg import Bool
 
 import cv2
@@ -54,18 +54,18 @@ def calculate_movement(frame):
 
         cv2.putText(frame, str(markerID), (topLeft[0], topLeft[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
-        if cX < MIN_CX:
-            print("Mover a la izquierda")
-            ret = IZQUIERDA
-        elif cX > MAX_CX:
-            print("Mover a la derecha")
-            ret = DERECHA
-        elif cY < MIN_CY:
+        if cY < MIN_CY:
             print("Mover arriba")
             ret = ARRIBA
         elif cY > MAX_CY:
             print("Mover abajo")
             ret = ABAJO
+        elif cX < MIN_CX:
+            print("Mover a la izquierda")
+            ret = IZQUIERDA
+        elif cX > MAX_CX:
+            print("Mover a la derecha")
+            ret = DERECHA
         else:
             print("Perfecto")
             ret = ADELANTE
@@ -76,13 +76,13 @@ def calculate_movement(frame):
         
     cv2.rectangle(frame, (MIN_CX, MIN_CY), (MAX_CX, MAX_CY), (255,0,0), 3)
     
-    return ret
+    return ret, frame
 
 def showImage(frame):
 
     print("[INFO]: Starting ArUco detection")
 
-    msg = calculate_movement(frame)
+    msg, frame = calculate_movement(frame)
 
     print("[INFO]: Publishing {}".format(msg))
     pub.publish(msg)
@@ -94,7 +94,7 @@ def main():
     rospy.init_node('calibracion_vision')
 
     global pub
-    pub = rospy.Publisher('movimiento_ajuste', Float32, queue_size=2)
+    pub = rospy.Publisher('/robocol/topico', String, queue_size=2)
 
     sub1 = rospy.Subscriber(IMAGE_TOPIC, Image, image_recived, queue_size=2)
     # sub2 = rospy.Subscriber(MOVEMENT_TOPIC, bool, movement_recived, queue_size=10)
@@ -103,18 +103,21 @@ def main():
 
 if __name__ == '__main__':
     
+    # Aqui se definen las constantes utilizadas durante la ejecucion
 
-    MIN_CX = 160
-    MAX_CX = 320
+    # El espacio entre MIN_CX y MAX_CX es el centro enrt
+
+    MIN_CX = 190
+    MAX_CX = 300
     MIN_CY = 210
-    MAX_CY = 427
+    MAX_CY = 300
 
-    IZQUIERDA = 1
-    DERECHA = 2
-    ARRIBA = 3
-    ABAJO = 4
-    ADELANTE = 5
-    NO_AR = 6
+    IZQUIERDA = "left"
+    DERECHA = "right"
+    ARRIBA = "up"
+    ABAJO = "down"
+    ADELANTE = "go_close"
+    NO_AR = "Inicial_Pose"
     
     IMAGE_TOPIC = '/camera_image/color/image_raw'
     # MOVEMENT_TOPIC = '/movement_detected'
