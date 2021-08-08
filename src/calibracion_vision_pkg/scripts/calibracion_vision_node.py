@@ -3,7 +3,7 @@
 import rospy
 from sensor_msgs.msg import Image
 from std_msgs.msg import Float32
-from std_msgs.msg import bool
+# from std_msgs.msg import bool
 from cv_bridge import CvBridge
 
 import cv2
