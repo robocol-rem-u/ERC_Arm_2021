@@ -101,4 +101,18 @@ rosrun calibracion_vision_pkg calibracion_vision_node.py
 ```
 Una vez ejecutado el último comando, aparecerá una ventana llamada _image_ que contendrá la imagen recibida por el tópico junto con el procesamiendo debido
 
+# TO-DO
+
+## Visión
+
+1. Verificar los tópicos en el último enviroment Update
+2. Investigar acerca del camera_info y cómo se puede usar para mapear el ambiente
+3. Distribuir al equipo en las tareas
+
+## Brazo
+
+## Interfaz
+
+
+
 
