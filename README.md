@@ -101,6 +101,25 @@ rosrun calibracion_vision_pkg calibracion_vision_node.py
 ```
 Una vez ejecutado el último comando, aparecerá una ventana llamada _image_ que contendrá la imagen recibida por el tópico junto con el procesamiendo debido
 
+## ¿Cómo utilizar el docker?
+
+### 1. Tener la imagen
+
+Para utilizar el docker, primero debe tener Docker Engine instalada en su computador. Para esto, consultar la documentación de Docker
+- https://docs.docker.com/engine/install/
+
+Una vez instalada, tener la imagen de docker (Docker Image) disponible en su computador. Para esto hay dos opciones:
+
+1. Clonar la imagen de docker directamente desde el repositorio creado para Maintenance Task en Docker Hub. Para realizarlo, ejecute el siguiente comando:
+```
+docker clone robocol/maintenance_2021:latest
+```
+Debe verificar que en la imagen que está en el repositorio se encuentran los últimos cambios realizados al proyecto
+
+2. 
+
+### Ejecutar la imagen
+
 # TO-DO
 
 ## Visión
